@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class Main {
     private static Park park = new Park();
     private static Scanner scanner = new Scanner(System.in);
+    private static Ride[] rides = new Ride[20]; // Array to hold up to 20 Ride objects
+    private static int rideCount = 0; // Counter to keep track of number of rides added
 
     public static void main(String[] args) {
         while (true) {
@@ -50,6 +52,11 @@ public class Main {
     }
 
     private static void addRide() {
+        if (rideCount >= rides.length) {
+            System.out.println("Cannot add more rides. The array is full.");
+            return;
+        }
+
         System.out.print("Enter Ride Name: ");
         scanner.nextLine(); // Consume newline
         String name = scanner.nextLine();
@@ -63,6 +70,7 @@ public class Main {
         int maintenanceInterval = scanner.nextInt();
 
         Ride ride = new Ride(name, location, capacity, thrillLevel, maintenanceInterval);
+        rides[rideCount++] = ride; // Add ride to the array
         park.addRide(ride);
         System.out.println("Ride added successfully!");
     }
