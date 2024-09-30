@@ -24,9 +24,17 @@ public class Main {
         System.out.println("1. Add Ride");
         System.out.println("2. Simulate Day");
         System.out.println("3. View Park Summary");
-        System.out.println("4. Exit");
+        System.out.println("4. Show all the rides");
+        System.out.println("5. Exit");
         System.out.print("Enter your choice: ");
     }
+
+    private static void displayRides() {
+        for (int i = 0; i < rideCount; i++) {
+            System.out.println("Ride " + (i + 1) + ": " + rides[i].getName());
+        }
+    }
+
 
     private static int getUserChoice() {
         return scanner.nextInt();
@@ -44,6 +52,9 @@ public class Main {
                 viewParkSummary();
                 break;
             case 4:
+                displayRides();
+                break;
+            case 5:
                 exitSimulator();
                 break;
             default:
@@ -82,7 +93,6 @@ public class Main {
     private static void viewParkSummary() {
         System.out.println("\n--- Park Summary ---");
         System.out.println("Total Income: $" + Park.getTotalIncome());
-        // You can add more details here if needed
     }
 
     private static void exitSimulator() {

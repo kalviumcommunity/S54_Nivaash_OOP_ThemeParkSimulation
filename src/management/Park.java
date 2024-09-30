@@ -29,7 +29,7 @@ public class Park {
             }
         }
 
-        // Example of incrementing total income (you can add more logic here)
+        // Example of incrementing total income
         totalIncome += rides.size() * 100; // Assuming each ride generates $100 per day
 
         currentDay++;
