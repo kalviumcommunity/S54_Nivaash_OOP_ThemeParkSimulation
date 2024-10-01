@@ -12,6 +12,9 @@ public class Ride {
     private int totalRidesServed; // Total number of rides served
     private double totalRevenue; // Total revenue generated
 
+    // Static variable to track total revenue from all rides
+    private static double totalRevenueFromAllRides = 0;
+
     public Ride(String name, int capacity, int duration, int thrillLevel, double ticketPrice) {
         this.name = name;
         this.capacity = capacity;
@@ -72,10 +75,19 @@ public class Ride {
             numberOfVisitors = capacity; // Serve only up to capacity
         }
         totalRidesServed++;
-        totalRevenue += numberOfVisitors * ticketPrice; // Calculate revenue for this ride
+        double rideRevenue = numberOfVisitors * ticketPrice; // Calculate revenue for this ride
+        totalRevenue += rideRevenue;
+
+        // Update the static total revenue across all rides
+        totalRevenueFromAllRides += rideRevenue;
 
         // Print the operation details
-        System.out.println("Ride " + name + " operated for " + duration + " seconds, serving " + numberOfVisitors + " visitors and generating revenue of " + (numberOfVisitors * ticketPrice));
+        System.out.println("Ride " + name + " operated for " + duration + " seconds, serving " + numberOfVisitors + " visitors and generating revenue of " + rideRevenue);
+    }
+
+    // Static method to return the total revenue from all rides
+    public static double getTotalRevenueFromAllRides() {
+        return totalRevenueFromAllRides;
     }
 
     @Override
