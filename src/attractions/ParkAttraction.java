@@ -29,3 +29,4 @@ public abstract class ParkAttraction {
         return "Attraction Name: " + name + " (Open: " + (open ? "Yes" : "No") + ")";
     }
 }
+    
